@@ -1,25 +1,30 @@
 
 body {
     margin: 0;
-    height: 100vh;
-    background: #c01111;
+    
+    background: #212121;
     
 }
-#start{
-    background-color: red;
-}
-.main{
-    height: 50%;
-    width: 100%;
-    background-color: white;
-    color: rgb(208, 205, 205);
 
+.main{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    justify-content: center;  
+    gap: 5px;
+    height: 50%;
+    color: rgb(208, 205, 205);
 }
-#start{
-    background-color: red;
+#img{
+    margin-top: 50px;
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+    display: block;
 }
+
 .buttons {
-    margin: 0;
     position: absolute;
     bottom: 50px;
     left: 50%;
@@ -30,13 +35,16 @@ body {
 
 button{
     background-color: rgb(208, 205, 205);
-    padding: 10px 30px;
+    padding: 5px 10px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     color: black;
     letter-spacing: 0.5px;
+}
+#reset{
+    padding: 5px 20px;
 }
 
 button:active {
