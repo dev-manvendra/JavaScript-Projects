@@ -1,17 +1,25 @@
+
 body {
     margin: 0;
     height: 100vh;
-    background: #212121;
+    background: #c01111;
     
+}
+#start{
+    background-color: red;
 }
 .main{
     height: 50%;
     width: 100%;
+    background-color: white;
     color: rgb(208, 205, 205);
 
 }
-
+#start{
+    background-color: red;
+}
 .buttons {
+    margin: 0;
     position: absolute;
     bottom: 50px;
     left: 50%;
@@ -19,7 +27,8 @@ body {
     display: flex;
     gap: 20px;
 }
-button {
+
+button{
     background-color: rgb(208, 205, 205);
     padding: 10px 30px;
     font-size: 14px;
