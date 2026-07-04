@@ -7,9 +7,9 @@ body {
 .main{
     height: 50%;
     width: 100%;
+    color: rgb(208, 205, 205);
+
 }
-
-
 
 .buttons {
     position: absolute;
@@ -36,8 +36,3 @@ button:active {
     transform: translateY(2px); 
     background-color: rgb(195, 192, 192); 
 }
-
-
-
-
-

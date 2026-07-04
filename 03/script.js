@@ -1,3 +1,63 @@
-const innerCode = document.querySelector('.main');
+const mess_div = document.querySelector('.main');
+const startBtn = document.getElementById('start');
+const resetBtn = document.getElementById('reset');
 
-innerCode.innerHTML = "<p>This is secret message</p>";
+
+let element = document.createElement('p');
+
+const msg = [
+    "Mission accepted. Retrieve the package before 2300 hours.",
+    "Agent Raven has been compromised. Abort immediately.",
+    "Meet the contact at the abandoned warehouse.",
+    "The password is: BLACK FALCON.",
+    "Enemy surveillance detected. Switch to Protocol X.",
+    "Destroy this message after reading.",
+    "The eagle lands at midnight.",
+    "Operation Silent Shadow begins in 10 minutes.",
+    "The target has changed. Await further instructions.",
+    "Extraction point moved to Sector 7."
+    
+];
+const alertMsg = [
+  "CLASSIFIED: Proceed to Checkpoint Echo at 2200 hours. Await further instructions.",
+  "TOP SECRET: The package has changed hands. Track the courier without being detected.",
+  "MISSION UPDATE: Surveillance confirms the target is moving north. Maintain visual contact.",
+  "PRIORITY ALPHA: Destroy all evidence before extraction.",
+  "ALERT: Communication channel compromised. Switch to encrypted frequency Delta-9.",
+  "CONFIDENTIAL: The meeting location has been relocated. Use the secondary entrance.",
+  "URGENT: Abort the operation immediately. Enemy agents are aware of your presence.",
+  "MISSION BRIEF: Retrieve the black dossier from locker 317 before sunrise.",
+  "CLEARANCE LEVEL OMEGA: You have one opportunity. Failure is not an option.",
+  "NOTICE: Your cover identity remains intact. Continue as planned.",
+  "INTEL REPORT: A double agent has infiltrated headquarters. Trust no one.",
+  "ACCESS GRANTED: Vault security disabled for the next 90 seconds.",
+  "ENCRYPTED TRANSMISSION: Extraction vehicle arrives in exactly 12 minutes.",
+  "OPERATION NIGHTFALL: Enter through the east corridor. Avoid all cameras.",
+  "WARNING: Thermal sensors have been activated. Proceed with caution.",
+  "MISSION STATUS: The asset is secure. Escort them to the extraction point.",
+  "TOP SECRET: Deliver the encryption key to Agent Orion. No digital communication.",
+  "FIELD REPORT: Satellite surveillance is offline for five minutes. Move now.",
+  "DIRECTIVE: Leave no trace of your presence inside the facility.",
+  "SECURE MESSAGE: The target knows they are being watched. Adapt your strategy.",
+  "CLASSIFIED: Codeword 'ECLIPSE' is now active.",
+  "INTELLIGENCE UPDATE: Enemy patrols have doubled around Sector 12.",
+  "PRIORITY MESSAGE: The vault password expires at midnight.",
+  "SECURITY ALERT: Facial recognition systems are active throughout the compound.",
+  "MISSION CONTROL: Await the green signal before initiating contact.",
+  "TOP SECRET: Do not engage unless absolutely necessary.",
+  "CONFIDENTIAL: Your handler has gone silent. Continue independently.",
+  "FIELD ORDER: Replace the transmitter before 0430 hours.",
+  "ALPHA DIRECTIVE: Secure the hard drive and erase all remaining files.",
+  "MISSION BRIEF: The rendezvous point is beneath the old railway bridge.",
+  "WARNING: Unidentified drone activity detected overhead.",
+  "STATUS REPORT: Agent Falcon has completed phase one successfully.",
+  "NOTICE: Mission timeline reduced by thirty minutes.",
+  "PRIORITY OMEGA: Protect the witness at all costs.",
+  "INTEL: A hidden compartment exists behind the third bookshelf.",
+  "ENCRYPTED FILE: Authentication required. Clearance Level 5 only.",
+  "COMMAND: Destroy this transmission after reading.",
+  "MISSION UPDATE: New objective received. Ignore previous instructions.",
+  "ALERT: An unknown signal has been intercepted near your location.",
+  "FINAL ORDER: Extraction window closes in six minutes."
+];
+
