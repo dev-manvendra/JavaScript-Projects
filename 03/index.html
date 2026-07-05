@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   <title>Secret Code Receiver</title>
- <link rel="stylesheet" href="style3.css">
+  <link rel="stylesheet" href="style3.css">
 </head>
 <body>
   <div class="main">
+    <div class="status-container">
+      <span class="status-light" id="statusLight"></span>
+      <span class="status-label" id="statusLabel">REST</span>
+    </div>
+
     <img id="img" src="sender.jpg" alt="Sender">
-    <p id="msg"></p>
-    <span class="cursor">|</span>
+    
+    <div id="msg">
+      <span id="text"></span><span class="cursor">|</span>
+    </div>
   </div>
   <div class="buttons">
+    <h2>Spy Message Receiver</h2>
+    <p>You are a spy who sent to another Countory.<br>
+    Your job is to spy on enemy to get important information<br>
+    Meanwhile your are at a work while you command have to give you an important message for you </p>
     <button id="start">Get Code</button>
     <button id="reset">Reset</button>
   </div>
