@@ -23,7 +23,7 @@ function setStatus(isTyping) {
         statusLabel.textContent = "RECEIVING...";
     } else {
         statusLight.classList.remove("typing");
-        statusLabel.textContent = "REST";
+        statusLabel.textContent = "IDLE";
     }
 }
 
@@ -94,21 +94,30 @@ resetBtn.addEventListener("click", (e) => {
 function displayMsg(message) {
     return new Promise((resolve) => {
         let i = 0;
+        
 
         function type() {
 
             if (i >= message.length) {
-                resolve();
-                return;
+                setTimeout(()=>{
+                    resolve();
+                    return;
+                }, 500);
             }
 
-            letterClick.currentTime = 0;
-            letterClick.play();
+            else{
+                letterClick.currentTime = 0;
+                letterClick.play();
 
-            element.append(message[i]);
-            
-            i++;
-            setTimer = setTimeout(type, 200); 
+                element.append(message[i]);
+                
+                i++;
+                if(i == message.length - 1)
+                {
+                    delay = 500;
+                }
+                setTimer = setTimeout(type, 200); 
+            }
         }
 
         type();

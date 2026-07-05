@@ -138,11 +138,13 @@ body::after {
 }
 
 .cursor {
+   
     display: inline-block;
     color: #cfcfcf; 
     font-weight: bold;
     margin-left: 2px;
     animation: blink 1s infinite;
+
 }
 
 
