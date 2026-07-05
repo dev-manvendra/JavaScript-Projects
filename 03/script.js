@@ -2,8 +2,10 @@ const mess_div = document.querySelector('.main');
 const startBtn = document.getElementById('start');
 const resetBtn = document.getElementById('reset');
 
-// Target #text instead of #msg so the cursor is never overwritten
+
 let element = document.querySelector('#text');
+
+let typing = false;
 
 const statusLight = document.getElementById('statusLight');
 const statusLabel = document.getElementById('statusLabel');
@@ -14,7 +16,7 @@ const letterClick = new Audio('click-keyboard.mp3');
 let setTimer = null;
 
 function setStatus(isTyping) {
-    if (!statusLight || !statusLabel) return; // Safety check prevents crashes if HTML element is missing
+    if (!statusLight || !statusLabel) return; 
     
     if (isTyping) {
         statusLight.classList.add("typing");
@@ -26,8 +28,14 @@ function setStatus(isTyping) {
 }
 
 startBtn.addEventListener("click", (e) => {
+    if ( typing)
+    {    
+        return;
+    }
+    typing = true;
+
     click.currentTime = 0;
-    click.play().catch(() => {}); // Catch prevents script freeze if audio fails to load
+    click.play();
     
     clearTimeout(setTimer);
     element.innerHTML = "";
@@ -77,6 +85,7 @@ resetBtn.addEventListener("click", (e) => {
     
     clearTimeout(setTimer);
     setTimer = null;
+    typing= false;
     
     element.textContent = "";
     setStatus(false);
@@ -87,6 +96,7 @@ function displayMsg(message) {
         let i = 0;
 
         function type() {
+
             if (i >= message.length) {
                 resolve();
                 return;
@@ -98,7 +108,7 @@ function displayMsg(message) {
             element.append(message[i]);
             
             i++;
-            setTimer = setTimeout(type, 150); // Slightly faster typing speed (150ms)
+            setTimer = setTimeout(type, 200); 
         }
 
         type();
