@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #d9d9d9;
+    font-family: "Special Elite", monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+    opacity: .15;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle,
+        transparent 40%,
+        rgba(0, 255, 0, .05));
+}
+
+.main {
+    width: min(900px, 90vw);
+    min-height: 560px;
+    border: 2px solid #8f8f8f;
+    padding: 35px;
+    background: #0b0b0b;
+    box-shadow:
+        0 0 15px rgba(0, 255, 0, .12),
+        inset 0 0 30px rgba(0, 255, 0, .05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    animation: flicker 6s infinite;
+}
+
+.main::before {
+    content: "CLASSIFIED TERMINAL   •   ENCRYPTED CHANNEL";
+    position: absolute;
+    top: -14px;
+    left: 25px;
+    background: #050505;
+    color: #6dff6d;
+    padding: 0 12px;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.status-container {
+    position: absolute;
+    top: 245px; 
+    right: 35px; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8f8f8f;
+}
+
+.status-light {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff3333; 
+    box-shadow: 0 0 8px #ff3333, inset 0 0 2px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.status-light.typing {
+    background-color: #00ff00; 
+    box-shadow: 0 0 10px #00ff00, 0 0 18px #00ff00;
+}
+
+
+#img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border: 3px solid #8f8f8f;
+    filter: grayscale(100%) contrast(120%);
+    display: block;
+}
+
+#img.typing{
+
+    filter:
+        grayscale(100%)
+        brightness(120%);
+
+}
+
+
+#msg {
+    width: 100%;
+    min-height: 180px;
+    border: 1px solid #444;
+    padding: 20px;
+    background: black;
+    color: #cfcfcf;
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    overflow-wrap: break-word;
+    text-shadow: 0 0 3px rgba(255, 255, 255, .15);
+    display: block;
+}
+
+#text {
+    
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.cursor {
+   
+    display: inline-block;
+    color: #cfcfcf; 
+    font-weight: bold;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+
+}
+
+
+.buttons{
+
+    width:min(900px,90vw);
+    
+    background:#0b0b0b;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,.03);
+
+}
+
+.buttons h2{
+
+    color:#6dff6d;
+    letter-spacing:4px;
+    font-size:22px;
+    font-weight:normal;
+
+}
+
+.buttons p{
+
+    color:#9a9a9a;
+    text-align:center;
+    line-height:1.8;
+    max-width:700px;
+    font-size:15px;
+
+}
+
+
+button {
+    width: 160px;
+    padding: 12px 0;
+    background: #111;
+    color: #f5f5f5;
+    border: 2px solid #777;
+    font-family: "Special Elite", monospace;
+    font-size: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .15s;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: #181818;
+    border-color: #e5e5e5;
+}
+
+button:active {
+    transform: translateY(2px);
+    background: #090909;
+    border-style: inset;
+}
+
+button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+}
+
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    98% {
+        opacity: .97;
+    }
+    99% {
+        opacity: .94;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .main {
+        padding: 20px;
+    }
+
+    #img {
+        width: 170px;
+        height: 170px;
+    }
+
+    #msg {
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+    
+
+    .status-container {
+        top: 180px;
+        right: 20px;
+        font-size: 10px;
+    }
+}
