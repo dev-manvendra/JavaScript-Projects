@@ -6,18 +6,15 @@ const resetBtn = document.getElementById('reset');
 let element = document.querySelector('#msg');
 const click = new Audio('click.mp3')
 const letterClick = new Audio('click-keyboard.mp3')
-let setTimer = null;
-let state = true;
 
-let msg = "Hello jaskrit."
-let msg2 ="I hope you would be okay";
+
+let setTimer = null;
 
 
 startBtn.addEventListener("click", (e)=>{
     click.currentTime = 0;
     click.play();
-    setTimeout(()=>{
-        fetch("./message.json")
+    setTimeout(()=>{fetch("./message.json")
         .then(response => response.json())
         .then((data) => {
             const idx = Math.floor(Math.random() * data.agent.length);
@@ -52,7 +49,7 @@ startBtn.addEventListener("click", (e)=>{
 resetBtn.addEventListener("click", (e)=>{
     click.currentTime = 0;
     click.play();
-    clearInterval(setTimer);
+    clearTimeout(setTimer);
     setTimer = null;
     element.textContent = "";
     
@@ -84,7 +81,7 @@ function displayMsg(message){
             
             i++;
 
-            setTimeout(type,200);
+            setTimer = setTimeout(type,200);
 
         }
 
