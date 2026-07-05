@@ -12,24 +12,43 @@ let state = true;
 let msg = "Hello jaskrit."
 let msg2 ="I hope you would be okay";
 
-// const msg = fetch("./message.json").then()
 
 startBtn.addEventListener("click", (e)=>{
     click.currentTime = 0;
     click.play();
-    // if(state == true ){
-    //     startBtn.innerText = "Stop";
-    //     state = false;
-    // }
-    // else{
-    //     startBtn.innerText = "Get Code"
-    //     state = true;
-    // }
-    displayMsg(msg);
-    // displayMsg(msg2);
-    element.innerHTML="";
-    
+    setTimeout(()=>{
+        fetch("./message.json")
+        .then(response => response.json())
+        .then((data) => {
+            const idx = Math.floor(Math.random() * data.agent.length);
+
+            return displayMsg("Hello "+data.agent[idx])
+                .then(() => data); 
+        })
+        .then((data) => {
+            element.innerHTML+= "<br>";
+            const idx = Math.floor(Math.random() * data.msg.length);
+            return displayMsg(data.msg[idx])
+                .then(() => data); 
+        })
+        .then((data) => {
+            element.innerHTML+= "<br><br>";
+
+            const idx = Math.floor(Math.random() * data.alertMsg.length);
+
+            return displayMsg(data.alertMsg[idx]);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+        
+        
+        element.innerHTML="";
+        
+    },1000)
 })
+
+
 resetBtn.addEventListener("click", (e)=>{
     click.currentTime = 0;
     click.play();
@@ -41,19 +60,39 @@ resetBtn.addEventListener("click", (e)=>{
     
 
 })
-const displayMsg = (mess)=>{
-    let i =0;
-    setTimer = setInterval(()=>{
-        letterClick.currentTime = 0;
-        letterClick.play();
-        
-        element.append(mess[i]);
-        i++;
-        if(i == mess.length){
 
-            clearInterval(setTimer)
+function displayMsg(message){
+
+    return new Promise((resolve)=>{
+
+        let i = 0;
+
+        function type(){
+
+            if(i >= message.length){
+
+                resolve();
+
+                return;
+
+            }
+
+            letterClick.currentTime = 0;
+            letterClick.play();
+
+            element.append(message[i]);
+            
+            i++;
+
+            setTimeout(type,200);
+
         }
-    },200);
-   
+
+        type();
+
+    });
 
 }
+
+
+
